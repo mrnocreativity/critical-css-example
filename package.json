@@ -1,0 +1,30 @@
+{
+  "name": "Critical-CSS-Example",
+  "version": "1.0.0",
+  "repository": "https://github.com/mrnocreativity/critical-css-example",
+  "description": "A basic example of my personal critical CSS approach",
+  "keywords": [
+    "critical css",
+    "example",
+    "postcss",
+    "gulp"
+  ],
+  "author": "Ronny Welter",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "clear": "0.0.1",
+    "compression": "^1.6.2",
+    "del": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-copy": "0.0.2",
+    "gulp-file-include": "^0.13.7",
+    "gulp-postcss": "^6.1.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^2.1.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "postcss-critical-split": "^1.0.2",
+    "postcss-url": "^5.1.2"
+  }
+}

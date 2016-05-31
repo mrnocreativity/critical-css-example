@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 js-no-js"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 js-no-js"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 js-no-js"> <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9 js-no-js"> <![endif]-->
+<!--[if gt IE 9]>  <html class="js-no-js"> <![endif]-->
+<!--[if !IE]><!--> <html class="js-no-js"> <!--<![endif]-->
+
+<head>
+	<title>Nothing</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" id="viewport-meta" />
+	<meta http-equiv="cleartype" content="on" />
+
+	<!-- critical css start -->
+	<!--{{critical:css:'css/main-critical.css'}}-->
+	<!-- critical css end -->
+
+	<!-- critical js start -->
+	<!--{{critical:js:'js/app-critical.js'}}-->
+	<!-- critical js end -->
+
+	<!--[if IE 8]><meta name="browser" content="ie ie8 lte9 lte8" /><![endif]-->
+</head>
+<body ontouchstart>
+
+	<div class="container">
+		<header class="header">
+			<h1 class="title title--header">This is a basic example of a critical CSS approach</h1>
+		</header>
+
+		<main class="content">
+			<p>This is a simple example of my personal approach to critical CSS.</p>
+			<p>Basically I write my SASS/SCSS like I always do but I add simple annotations to the rules that should be included in the critical CSS.</p>
+			<p>The Gulp task then first processes the SASS file and then splits up the CSS files into 2 CSS files: <code>some.css</code> and <code>some-critical.css</code>. Then the URL's in the <code>some-critical.css</code> file are updated to their new relative paths before being inlined in the head of the site. The rest of the CSS is loaded with some inline JS.</p>
+			<p>This removes any blocking action of CSS from the site.</p>
+			<p>For the sake of no-Javascript support, we add the <code>some.css</code>  styleshheet the old fashioned way in <code>noscript</code> tags right before the <code>&lt;/body&gt;</code> tag.</p>
+		</main>
+
+		<aside class="social">
+			<h2 class="title title--social">Follow me</h2>
+			<ul class="social-links">
+				<li class="social-links__item"><a href="https://twitter.com/nocreativity">Twitter</a></li>
+				<li class="social-links__item"><a href="https://instagram.com/nocreativity">Instagram</a></li>
+				<li class="social-links__item"><a href="https://www.snapchat.com/add/mrNocreativity">Snapchat</a></li>
+				<li class="social-links__item"><a href="https://youtube.com/nocreativity">Youtube</a></li>
+				<li class="social-links__item"><a href="https://linkedin.com/in/nocreativity">LinkedIn</a></li>
+				<li class="social-links__item"><a href="https://facebook.com/ronny.welter">Facebook</a></li>
+				<li class="social-links__item"><a href="https://github.com/mrnocreativity">Github</a></li>
+				<li class="social-links__item"><a href="https://www.npmjs.com/~nocreativity">NPM</a></li>
+			</ul>
+		</aside>
+
+		<footer class="footer">
+			<h2>Always remember The Titans</h2>
+			<ul class="useful-links">
+				<li class="useful-links__item"><a href="https://nodejs.org/en/">Node JS</a></li>
+				<li class="useful-links__item"><a href="https://www.npmjs.com/">NPM</a></li>
+				<li class="useful-links__item"><a href="http://sass-lang.com/">SASS</a></li>
+				<li class="useful-links__item"><a href="http://postcss.org/">PostCSS</a></li>
+				<li class="useful-links__item"><a href="http://gulpjs.com/">Gulp</a></li>
+				<li class="useful-links__item">and of course: <a href="http://stackoverflow.com/">StackOverflow</a></li>
+			</ul>
+
+		</footer>
+	</div>
+
+
+	<script type="text/javascript" src="js/app.js" async></script>
+	<noscript>
+		<link rel="stylesheet" href="css/main.css" />
+	</noscript>
+</body>
+</html>
