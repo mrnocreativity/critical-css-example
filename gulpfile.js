@@ -82,14 +82,15 @@ gulp.task('css:stream', function() {
 });
 
 gulp.task('css:critical:split', ['css:sass'], function() {
-	var postcssPlugins = [];
+	var splitOptions = {
+			'start': 'critical:start',
+			'stop': 'critical:end',
+			'suffix': '-critical'
+		},
+		criticalSplit = require('postcss-critical-split');
 
-	postcssPlugins.push(require('postcss-critical-split')({
-		'pattern': /CRITICAL/
-	}));
-
-	return gulp.src(['**/*.css','!**/*-critical.css'], {'cwd': './build/css'})
-		.pipe(postcss(postcssPlugins));
+	return gulp.src(['**/*.css','!**/*'+ splitOptions.suffix +'.css'], {'cwd': './build/css'})
+		.pipe(postcss([criticalSplit(splitOptions)]));
 });
 
 gulp.task('css:critical:render', ['css:critical:split'], function(done) {
@@ -111,7 +112,7 @@ gulp.task('css:critical:render', ['css:critical:split'], function(done) {
 	}
 });
 
-gulp.task('css', ['css:sass', 'css:critical:split', 'css:critical:render']);
+gulp.task('css', ['css:critical:render']);
 
 
 gulp.task('js', function() {

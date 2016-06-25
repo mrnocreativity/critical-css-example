@@ -1,10 +1,21 @@
+/*critical:start*/
+/*
+  this is the content of the critical css.
+  Important stuff, yo!!
+*/
+/*critical:end*/
+
+
+$font-path: '../fonts/';
+
 *, *:before, *:after {
-	/*CRITICAL*/
+	/*critical:start*/
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: "Arial", sans-serif;
 }
+/*critical:end*/
 
 a {
 	&:link,
@@ -14,24 +25,38 @@ a {
 	}
 
 	&:hover {
+		/*critical:start*/
 		color: #ff0066;
+		/*critical:end*/
 	}
+
 }
 
 p{
-	/*CRITICAL*/
 	margin: 2em 10%;
+	/*critical*/
 }
 
+/* critical:start */
+@font-face {
+	font-family: 'texgyreherosregular';
+	src: url($font-path + 'texgyreheros-regular-webfont.eot');
+	src: url($font-path + 'texgyreheros-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url($font-path + 'texgyreheros-regular-webfont.woff') format('woff'),
+		 url($font-path + 'texgyreheros-regular-webfont.ttf') format('truetype'),
+		 url($font-path + 'texgyreheros-regular-webfont.svg#texgyreherosregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* critical:end */
+
 code {
-	/*CRITICAL*/
 	display: inline-block;
 	padding: 2px 5px;
 	background-color: #EEEEEE;
 }
 
 .header {
-	/*CRITICAL*/
 	padding: 30px 10%;
 	background-color: #EEE;
 }
@@ -41,11 +66,13 @@ code {
 	padding: 20px 10%;
 	background-color: #111;
 }
+/*critical:start*/
 
 .useful-links,
 .social-links {
 	list-style: none;
 }
+/*critical:end*/
 
 .useful-links__item {
 	padding: 5px 0px;
@@ -61,21 +88,38 @@ code {
 
 .social {
 	background-color: #ccc;
+	/*critical:start*/
 	padding: 30px 10%;
 
 }
 
+/*critical:end*/
+
 .social-links{
+	/*critical:start*/
 	&:after {
 		display: table;
 		content: '';
 		clear: both;
+		/*just a comment*/
+		/*critical:end*/
 	}
+
+}
+
+a{
 }
 
 .title {
 	&--header {
 		font-size: 40px;
+		/*
+		i just want to test something
+		let's see how this works
+		when
+		critical
+		is in this comment
+		*/
 	}
 
 	&--social {
@@ -89,4 +133,40 @@ code {
 	padding-top: 10px;
 	display: block;
 	text-align: center;
+}
+
+
+@media all and (min-width: 500px) {
+	.myClass {
+		float: none;
+		/*critical:start*/
+		clear: both;
+		/*critical:end*/
+	}
+}
+
+
+@media all and (min-width: 600px) {
+	/*critical:start*/
+
+	.myOtherClass {
+		color: #ff0066;
+		text-decoration: underline;
+		border: red thin solid;
+
+		@media all and (max-width: 2000px) {
+			border: green thin solid;
+			/*critical:end*/
+			background-color: orange;
+		}
+	}
+}
+
+@media all and (min-width: 1200px) {
+	.bodyClass {
+		margin: 0;
+		/*critical*/
+		/* this is the critical block*/
+		padding: 20px;
+	}
 }
