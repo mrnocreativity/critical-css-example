@@ -1,8 +1,8 @@
 # critical-css-example
-This is a basic example to show how I set up my critical CSS and how I use the `postcss-critical-spit` plugin.
+This is a basic example to show how I set up my critical CSS and how I use the `postcss-critical-spit` plugin (located at https://www.npmjs.com/package/postcss-critical-split).
 
 ## Install
-* Clone the repository 
+* Clone the repository
 * Open a Terminal window in the main project folder
 * run `npm install`
 

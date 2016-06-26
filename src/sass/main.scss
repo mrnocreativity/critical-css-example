@@ -7,15 +7,13 @@
 
 
 $font-path: '../fonts/';
-
+/*critical:start*/
 *, *:before, *:after {
-	/*critical:start*/
-	box-sizing: border-box;
+		box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 	font-family: "Arial", sans-serif;
 }
-/*critical:end*/
 
 a {
 	&:link,
@@ -25,19 +23,16 @@ a {
 	}
 
 	&:hover {
-		/*critical:start*/
 		color: #ff0066;
-		/*critical:end*/
 	}
 
 }
 
 p{
 	margin: 2em 10%;
-	/*critical*/
 }
 
-/* critical:start */
+
 @font-face {
 	font-family: 'texgyreherosregular';
 	src: url($font-path + 'texgyreheros-regular-webfont.eot');
@@ -48,31 +43,33 @@ p{
 	font-weight: normal;
 	font-style: normal;
 }
+
 /* critical:end */
 
 code {
 	display: inline-block;
 	padding: 2px 5px;
 	background-color: #EEEEEE;
+	/*critical*/
 }
 
+/* critical:start */
 .header {
 	padding: 30px 10%;
 	background-color: #EEE;
 }
+/* critical:end */
 
 .footer {
 	color: #fff;
 	padding: 20px 10%;
 	background-color: #111;
 }
-/*critical:start*/
 
 .useful-links,
 .social-links {
 	list-style: none;
 }
-/*critical:end*/
 
 .useful-links__item {
 	padding: 5px 0px;
@@ -88,28 +85,21 @@ code {
 
 .social {
 	background-color: #ccc;
-	/*critical:start*/
 	padding: 30px 10%;
-
 }
 
-/*critical:end*/
-
 .social-links{
-	/*critical:start*/
 	&:after {
 		display: table;
 		content: '';
 		clear: both;
 		/*just a comment*/
-		/*critical:end*/
 	}
 
 }
 
-a{
-}
 
+/* critical:start */
 .title {
 	&--header {
 		font-size: 40px;
@@ -117,7 +107,7 @@ a{
 		i just want to test something
 		let's see how this works
 		when
-		critical
+		critical:start
 		is in this comment
 		*/
 	}
@@ -126,6 +116,7 @@ a{
 		text-align: center;
 	}
 }
+/* critical:end */
 
 .social-links__item {
 	float: left;
@@ -133,40 +124,4 @@ a{
 	padding-top: 10px;
 	display: block;
 	text-align: center;
-}
-
-
-@media all and (min-width: 500px) {
-	.myClass {
-		float: none;
-		/*critical:start*/
-		clear: both;
-		/*critical:end*/
-	}
-}
-
-
-@media all and (min-width: 600px) {
-	/*critical:start*/
-
-	.myOtherClass {
-		color: #ff0066;
-		text-decoration: underline;
-		border: red thin solid;
-
-		@media all and (max-width: 2000px) {
-			border: green thin solid;
-			/*critical:end*/
-			background-color: orange;
-		}
-	}
-}
-
-@media all and (min-width: 1200px) {
-	.bodyClass {
-		margin: 0;
-		/*critical*/
-		/* this is the critical block*/
-		padding: 20px;
-	}
 }
