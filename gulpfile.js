@@ -1,4 +1,3 @@
-/* global require, __dirname */
 'use strict';
 
 var gulp = require('gulp'),
@@ -6,13 +5,16 @@ var gulp = require('gulp'),
 	path = require('path'),
 	clear = require('clear'),
 	del = require('del'),
-	browserSync = require('browser-sync').create(),
 	compress = require('compression'),
 	sass = require('gulp-sass'),
 	replace = require('gulp-replace'),
-	postcss = require('gulp-postcss'),
 	fileInclude = require('gulp-file-include'),
+	rename = require('gulp-rename'),
 	util = require('gulp-util'),
+	sourcemaps = require('gulp-sourcemaps'),
+	postcss = require('gulp-postcss'),
+	postcssCriticalSplit = require('postcss-critical-split'),
+	browserSync = require('browser-sync').create(),
 	renderCritical = false;
 
 if (getArgument('release') !== null) {
@@ -72,7 +74,9 @@ gulp.task('clean', function() {
 
 gulp.task('css:sass', function() {
 	return gulp.src('*.scss', {'cwd': './src/sass'})
+		.pipe(sourcemaps.init())
 		.pipe(sass())
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./build/css'));
 });
 
@@ -81,19 +85,32 @@ gulp.task('css:stream', function() {
 		.pipe(browserSync.stream({'match': '**/*.css'}));
 });
 
-gulp.task('css:critical:split', ['css:sass'], function() {
-	var splitOptions = {
-			'start': 'critical:start',
-			'stop': 'critical:end',
-			'suffix': '-critical'
-		},
-		criticalSplit = require('postcss-critical-split');
+gulp.task('css:split', ['css:split:critical', 'css:split:rest']);
+
+gulp.task('css:split:critical', ['css:sass'], function() {
+	var splitOptions = getSplitOptions(true);
 
 	return gulp.src(['**/*.css','!**/*'+ splitOptions.suffix +'.css'], {'cwd': './build/css'})
-		.pipe(postcss([criticalSplit(splitOptions)]));
+		.pipe(sourcemaps.init({'loadMaps': true}))
+		.pipe(postcss([postcssCriticalSplit(splitOptions)]))
+		.pipe(rename({'suffix': splitOptions.suffix}))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./build/css'));
 });
 
-gulp.task('css:critical:render', ['css:critical:split'], function(done) {
+gulp.task('css:split:rest', ['css:sass'], function() {
+	var splitOptions = getSplitOptions(false);
+
+	return gulp.src(['**/*.css','!**/*'+ splitOptions.suffix +'.css'], {'cwd': './build/css'})
+		.pipe(sourcemaps.init({'loadMaps': true}))
+		.pipe(postcss([postcssCriticalSplit(splitOptions)]))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./build/css'));
+});
+
+
+
+gulp.task('css:critical:render', ['css:split'], function(done) {
 	var postcssPlugins = [];
 
 	if(renderCritical) {
@@ -143,6 +160,22 @@ gulp.task('watch', function() {
 
 ///////////////////////////////////////////
 /////////////////////////////////////////*/
+
+function getSplitOptions(isCritical) {
+	var options = {
+		'start': 'critical:start',
+		'stop': 'critical:end',
+		'suffix': '-critical'
+	};
+
+	if (isCritical === true) {
+		options.output = postcssCriticalSplit.output_types.CRITICAL_CSS;
+	} else {
+		options.output = postcssCriticalSplit.output_types.REST_CSS;
+	}
+
+	return options;
+}
 
 function replaceCritical(matchedString, type, url){
 	var result = matchedString = '',

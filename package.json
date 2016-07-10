@@ -20,12 +20,14 @@
     "gulp-copy": "0.0.2",
     "gulp-file-include": "^0.13.7",
     "gulp-postcss": "^6.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "postcss": "^5.0.21",
-    "postcss-critical-split": "^2.0.0",
+    "postcss-critical-split": "^2.1.0",
     "postcss-url": "^5.1.2"
   }
 }
