@@ -1,4 +1,4 @@
-# critical-css-example
+# Critical CSS example (using PostCSS Critical Split)
 This is a basic example to show how I set up my critical CSS and how I use the `postcss-critical-spit` plugin (located at https://www.npmjs.com/package/postcss-critical-split).
 
 ## Install
