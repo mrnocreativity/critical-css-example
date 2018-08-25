@@ -138,7 +138,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('html', ['js', 'css'], function(done) {
-	return gulp.src('**/*.html', {'cwd': './src/html/'})
+	return gulp.src('**/gulp.html', {'cwd': './src/html/'})
 		.pipe(replace(/<!--{{critical:(css|js):'(.+)'}}-->/gi, replaceCritical))
 		.pipe(renderCritical ? fileInclude({
 			'prefix': '@@',

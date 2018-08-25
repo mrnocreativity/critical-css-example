@@ -9,13 +9,20 @@
     "postcss",
     "gulp"
   ],
+  "scripts": {
+    "webpack": "clear && webpack --config webpack.config.js --mode production",
+    "gulp": "clear && gulp"
+  },
   "author": "Ronny Welter",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.12.8",
+    "clean-webpack-plugin": "^0.1.19",
     "clear": "0.0.1",
     "compression": "^1.6.2",
+    "css-loader": "^1.0.0",
     "del": "^2.1.0",
+    "file-loader": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-copy": "0.0.2",
     "gulp-file-include": "^0.13.7",
@@ -26,8 +33,17 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.0",
     "postcss": "^5.0.21",
-    "postcss-critical-split": "^2.1.0",
-    "postcss-url": "^5.1.2"
+    "postcss-critical-split": "^2.5.1",
+    "postcss-csso": "^3.0.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-pipeline-webpack-plugin": "^4.1.0",
+    "postcss-url": "^5.1.2",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
   }
 }

@@ -1,6 +1,5 @@
 var postcss = require('postcss'),
 	criticalSplit = require('postcss-critical-split'),
-	clear = require('clear'),
 	css = '',
 	fs = require('fs');
 
@@ -9,8 +8,6 @@ function saveCssFile(filepath, cssRoot) {
     fs.writeFileSync(filepath, cssRoot.css);
 
 }
-
-clear();
 
 css = fs.readFileSync('build/css/main.css');
 

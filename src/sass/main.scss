@@ -35,11 +35,7 @@ p{
 
 @font-face {
 	font-family: 'texgyreherosregular';
-	src: url($font-path + 'texgyreheros-regular-webfont.eot');
-	src: url($font-path + 'texgyreheros-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		 url($font-path + 'texgyreheros-regular-webfont.woff') format('woff'),
-		 url($font-path + 'texgyreheros-regular-webfont.ttf') format('truetype'),
-		 url($font-path + 'texgyreheros-regular-webfont.svg#texgyreherosregular') format('svg');
+	src:url($font-path + 'texgyreheros-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
